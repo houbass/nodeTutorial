@@ -1,0 +1,1 @@
+this is the sum of two files: hello this is first test text file, this is second text in subfolderthis is the sum of two files: hello this is first test text file, this is second text in subfolder
