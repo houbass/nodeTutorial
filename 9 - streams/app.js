@@ -1,16 +1,25 @@
-const { createReadStream } = require('fs');
+const stream = require("./stream");
+//require("./createBigFile");
 
-// Better for big data (devided to chunks)
-// each chunk have may 90000bites
-const stream = createReadStream(
-  '../content/bigData.txt',
-  { highWaterMark: 90000, encoding: 'utf8' }
-);
+// SERVER
+const http = require("http");
 
-stream.on('data', (chunk) => {
-  console.log(chunk);
-})
+// request and response
+const server = http.createServer();
 
-stream.on('error', (err) => {
-  console.log(err);
-})
+server.on("request", (req, res) => {
+  console.log("Request event");
+
+  if (req.url === "/data") {
+    // Streamed data in chunks
+    stream(res);
+  } else if (req.url === "/") {
+    res.end("Navigate to /data to see the stream output");
+  } else {
+    res.end("no data");
+  }
+});
+
+server.listen(5000, () => {
+  console.log("Server listening on 5000");
+});

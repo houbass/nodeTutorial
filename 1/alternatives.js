@@ -1,6 +1,6 @@
-module.exports.items = ['item1', 'item2'];
+module.exports.items = ["item1", "item2"];
 const anotherItems = {
-  name: 'alan'
-}
+  name: "alan",
+};
 
 module.exports.data = anotherItems;

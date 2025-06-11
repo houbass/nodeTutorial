@@ -1,22 +1,22 @@
-const { readFile, writeFile } = require('fs').promises;
-const util = require('util');
+const { readFile, writeFile } = require("fs").promises;
+const util = require("util");
 
-// const readFilePromise = util.promisify(readFile);
+//const readFilePromise = util.promisify(readFile);
 // const writeFilePromise = util.promisify(writeFile);
 
 async function start() {
   try {
     //const first = await getText('../content/test.txt');
     //const second = await getText('../content/subfolder/test2.txt');
-    const first = await readFile('../content/test.txt', 'utf8');
-    const second = await readFile('../content/subfolder/test2.txt', 'utf8');
+    const first = await readFile("../content/test.txt", "utf8");
+    const second = await readFile("../content/subfolder/test2.txt", "utf8");
     await writeFile(
-      '../content/result-async.txt', 
+      "../content/result-async.txt",
       `this is the new sum of two files: ${first}, ${second}`,
-      { flag: 'a' }
+      { flag: "a" }
     );
 
-    console.log('--- AWAIT METHOD ---');
+    console.log("--- AWAIT METHOD ---");
     console.log(first);
     console.log(second);
   } catch (error) {
@@ -25,7 +25,6 @@ async function start() {
 }
 
 start();
-
 
 // Normal js way
 /*
